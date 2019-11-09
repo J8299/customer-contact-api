@@ -6,20 +6,23 @@ import io.swagger.annotations.*;
 import org.glassfish.jersey.server.JSONP;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
 @Component
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/contact")
 public class CustomerInformationResource {
 
-    private CustomerContactService customerContactService = new CustomerContactService();
+    @Inject
+    private CustomerContactService customerContactService;
 
     private final String SERVICE_NOT_FOUND = "Service not found";
     private final String SERVER_ERROR = "Server error";
@@ -31,7 +34,6 @@ public class CustomerInformationResource {
     private final String ID_PARAM = "The UUID used to search for customer contact information";
 
     @GET
-    @Path("/contacts")
     @ApiOperation(value = GET_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = SERVICE_NOT_FOUND),
@@ -40,7 +42,7 @@ public class CustomerInformationResource {
     public Collection<CustomerContactEntity> getAllCustomerContacts() throws Exception{
         Collection<CustomerContactEntity> listOfCustomers = new ArrayList<CustomerContactEntity>();
         try {
-            listOfCustomers = customerContactService.getAllCustomer();
+            listOfCustomers.addAll(customerContactService.getAllCustomers());
         } catch (Exception ex) {
             throw new Exception("Unable to return list of customers", ex);
         }
@@ -55,17 +57,17 @@ public class CustomerInformationResource {
             @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = SERVER_ERROR)
     })
     public CustomerContactEntity getUniqueCustomerContact(
-            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false) @PathParam("id") String id
+            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false)
+            @PathParam("id") String id
     ) throws Exception {
         try {
-            return customerContactService.getByCustomerId(id);
+            return customerContactService.getCustomerById(id);
         } catch (Exception ex) {
             throw new Exception("Unable to return customer id: " + id, ex);
         }
     }
 
     @POST
-    @Path("/contacts")
     @JSONP(queryParam = JSONP.DEFAULT_QUERY)
     @ApiOperation(value = POST_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
@@ -76,14 +78,14 @@ public class CustomerInformationResource {
             @RequestBody CustomerContactEntity customerContactEntity
     ) throws Exception {
         try {
-            return customerContactService.createNewCustomerContact(customerContactEntity);
+            return customerContactService.postCustomer(customerContactEntity);
         } catch (Exception ex) {
             throw new Exception("Unable to create customer id: " + customerContactEntity.getId(), ex);
         }
     }
 
     @PUT
-    @Path("/contacts/{id}")
+    @RequestMapping("/{id}")
     @JSONP(queryParam = JSONP.DEFAULT_QUERY)
     @ApiOperation(value = PUT_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
@@ -91,11 +93,12 @@ public class CustomerInformationResource {
             @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = SERVER_ERROR)
     })
     public CustomerContactEntity updateCustomerContact(
-            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false) @PathParam("id") String id,
+            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false)
+            @PathParam("id") String id,
             @RequestBody CustomerContactEntity newCustomerContact
     ) throws Exception {
         try {
-            return customerContactService.overwriteCustomerContact(id, newCustomerContact);
+            return customerContactService.updateCustomer(id, newCustomerContact);
         } catch (Exception ex) {
             throw new Exception("Unable to overwrite customer id: " + id, ex);
         }
@@ -103,7 +106,7 @@ public class CustomerInformationResource {
 
 
     @DELETE
-    @Path("/contacts/{id}")
+    @RequestMapping("/{id}")
     @ApiOperation(value = DELETE_INTENT, response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = SERVICE_NOT_FOUND),
@@ -113,7 +116,7 @@ public class CustomerInformationResource {
             @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false) @PathParam("id") String id
     ) throws Exception {
         try {
-            return customerContactService.deleteCustomerContact(id);
+            return customerContactService.deleteCustomer(id);
         } catch (Exception ex) {
             throw new Exception("Unable to remove customer id: " + id, ex);
         }

@@ -4,31 +4,31 @@ import java.io.Serializable;
 
 public class CustomerNameJson implements Serializable {
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String first;
+    private String middle;
+    private String last;
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst() {
+        return first;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getMiddle() {
+        return middle;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast() {
+        return last;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst(String first) {
+        this.first = first;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setMiddle(String middle) {
+        this.middle = middle;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast(String last) {
+        this.last = last;
     }
 }

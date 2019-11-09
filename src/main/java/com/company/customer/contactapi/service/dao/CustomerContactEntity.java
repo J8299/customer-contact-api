@@ -49,6 +49,7 @@ public class CustomerContactEntity {
             CustomerPhoneJson customerPhoneJson,
             String email
     ) {
+        super();
         this.id = id;
         this.customerNameJson = customerNameJson;
         this.customerAddressJson = customerAddressJson;
