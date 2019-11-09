@@ -19,8 +19,8 @@ import java.util.Collections;
 
 @Component
 @Singleton
-//@RestController
-@Path("/contacts")
+@RestController
+@RequestMapping("/contacts")
 public class CustomerInformationResource {
 
     @Inject
@@ -36,6 +36,7 @@ public class CustomerInformationResource {
     private final String ID_PARAM = "The UUID used to search for customer contact information";
 
     @GET
+    @Path("/")
     @ApiOperation(value = GET_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = SERVICE_NOT_FOUND),
