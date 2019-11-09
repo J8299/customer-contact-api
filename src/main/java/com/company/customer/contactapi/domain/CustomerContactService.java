@@ -43,7 +43,8 @@ public class CustomerContactService {
     }
 
     public String deleteCustomer(String id){
-        customerContactRepository.deleteByIdEquals(id);
+        CustomerContactEntity deleteCustomerContact = customerContactRepository.findByIdEquals(id);
+        customerContactRepository.delete(deleteCustomerContact);
         return "Successfully deleted customer id: " + id;
     }
 

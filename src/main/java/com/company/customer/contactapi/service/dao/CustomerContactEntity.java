@@ -79,4 +79,24 @@ public class CustomerContactEntity {
         return email;
     }
 
+//    public void setId(String id) {
+//        this.id = id;
+//    }
+//
+//    public void setCustomerNameJson(CustomerNameJson customerNameJson) {
+//        this.customerNameJson = customerNameJson;
+//    }
+//
+//    public void setCustomerAddressJson(CustomerAddressJson customerAddressJson) {
+//        this.customerAddressJson = customerAddressJson;
+//    }
+//
+//    public void setCustomerPhoneJson(CustomerPhoneJson customerPhoneJson) {
+//        this.customerPhoneJson = customerPhoneJson;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+
 }

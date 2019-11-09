@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
@@ -17,8 +18,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Component
-@RestController
-@RequestMapping("/contact")
+@Singleton
+//@RestController
+@Path("/contacts")
 public class CustomerInformationResource {
 
     @Inject
@@ -50,7 +52,7 @@ public class CustomerInformationResource {
     }
 
     @GET
-    @Path("/contacts/{id}")
+    @Path("/{id}")
     @ApiOperation(value = GET_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = SERVICE_NOT_FOUND),
@@ -85,7 +87,7 @@ public class CustomerInformationResource {
     }
 
     @PUT
-    @RequestMapping("/{id}")
+    @Path("/{id}")
     @JSONP(queryParam = JSONP.DEFAULT_QUERY)
     @ApiOperation(value = PUT_INTENT, response = CustomerContactEntity.class)
     @ApiResponses(value = {
@@ -106,14 +108,15 @@ public class CustomerInformationResource {
 
 
     @DELETE
-    @RequestMapping("/{id}")
+    @Path("/{id}")
     @ApiOperation(value = DELETE_INTENT, response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = SERVICE_NOT_FOUND),
             @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = SERVER_ERROR)
     })
     public String deleteCustomerContact(
-            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false) @PathParam("id") String id
+            @ApiParam(value = ID_PARAM, name = "id", required = true, allowMultiple = false)
+            @PathParam("id") String id
     ) throws Exception {
         try {
             return customerContactService.deleteCustomer(id);
