@@ -6,27 +6,24 @@ import org.hibernate.annotations.TypeDef;
 
 import java.io.Serializable;
 
-@TypeDef(name = "string-array", typeClass = StringArrayType.class)
 public class CustomerPhoneJson implements Serializable {
 
     private String number;
-
-    @Type(type = "string-array")
-    private String[] type;
+    private PhoneType type;
 
     public String getNumber() {
         return number;
     };
 
-    public String[] getType() {
-        return type.clone();
+    public PhoneType getType() {
+        return type;
     }
 
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public void setType(String... type) {
+    public void setType(PhoneType type) {
         this.type = type;
     }
 

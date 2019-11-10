@@ -22,7 +22,7 @@ public class CustomerContactService {
         return Collections.unmodifiableCollection(customerContactEntityCollection);
     }
 
-    public CustomerContactEntity getCustomerById(String id) {
+    public CustomerContactEntity getCustomerById(Integer id) {
         return customerContactRepository.findByIdEquals(id);
     }
 
@@ -30,22 +30,22 @@ public class CustomerContactService {
         return customerContactRepository.save(customerContactEntity);
     }
 
-    public CustomerContactEntity updateCustomer(String id, CustomerContactEntity customerContactEntity){
+    public CustomerContactEntity updateCustomer(Integer id, CustomerContactEntity customerContactEntity){
         CustomerContactEntity mergedCustomerContact = new CustomerContactEntity(
                 id,
-                customerContactEntity.getCustomerNameJson(),
-                customerContactEntity.getCustomerAddressJson(),
-                customerContactEntity.getCustomerPhoneJson(),
+                customerContactEntity.getName(),
+                customerContactEntity.getAddress(),
+                customerContactEntity.getPhone(),
                 customerContactEntity.getEmail()
         );
         customerContactRepository.save(mergedCustomerContact);
         return mergedCustomerContact;
     }
 
-    public String deleteCustomer(String id){
+    public String deleteCustomer(Integer id){
         CustomerContactEntity deleteCustomerContact = customerContactRepository.findByIdEquals(id);
         customerContactRepository.delete(deleteCustomerContact);
-        return "Successfully deleted customer id: " + id;
+        return "Successfully deleted customer id: " + id.toString();
     }
 
 }

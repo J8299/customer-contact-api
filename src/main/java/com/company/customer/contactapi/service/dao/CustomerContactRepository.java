@@ -11,7 +11,7 @@ public interface CustomerContactRepository extends Repository<CustomerContactEnt
 
     List<CustomerContactEntity> findAll();
 
-    CustomerContactEntity findByIdEquals(String id);
+    CustomerContactEntity findByIdEquals(Integer id);
 
     CustomerContactEntity save(CustomerContactEntity customerContactEntity);
 

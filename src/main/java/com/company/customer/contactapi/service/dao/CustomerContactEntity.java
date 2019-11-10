@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @ApiModel(description = "Representation of Customer Contacts")
 @Entity
@@ -25,78 +26,58 @@ public class CustomerContactEntity {
 
     @Id
     @Column(name = "id")
-    private String id;
+    private Integer id;
 
     @Column(name = "name")
     @Type(type = "CustomerName")
-    private CustomerNameJson customerNameJson;
+    private CustomerNameJson name;
 
     @Column(name = "address")
     @Type(type = "CustomerAddress")
-    private CustomerAddressJson customerAddressJson;
+    private CustomerAddressJson address;
 
     @Column(name = "phone")
     @Type(type = "CustomerPhone")
-    private CustomerPhoneJson customerPhoneJson;
+    private List<CustomerPhoneJson> phone;
 
     @Column(name = "email")
     private String email;
 
     public CustomerContactEntity(
-            String id,
+            Integer id,
             CustomerNameJson customerNameJson,
             CustomerAddressJson customerAddressJson,
-            CustomerPhoneJson customerPhoneJson,
+            List<CustomerPhoneJson> customerPhoneJson,
             String email
     ) {
         super();
         this.id = id;
-        this.customerNameJson = customerNameJson;
-        this.customerAddressJson = customerAddressJson;
-        this.customerPhoneJson = customerPhoneJson;
+        this.name = customerNameJson;
+        this.address = customerAddressJson;
+        this.phone = customerPhoneJson;
         this.email = email;
     }
 
     public CustomerContactEntity() {};
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public CustomerNameJson getCustomerNameJson() {
-        return customerNameJson;
+    public CustomerNameJson getName() {
+        return name;
     }
 
-    public CustomerAddressJson getCustomerAddressJson() {
-        return customerAddressJson;
+    public CustomerAddressJson getAddress() {
+        return address;
     }
 
-    public CustomerPhoneJson getCustomerPhoneJson() {
-        return customerPhoneJson;
+    public List<CustomerPhoneJson> getPhone() {
+        return phone;
     }
 
     public String getEmail() {
         return email;
     }
-
-//    public void setId(String id) {
-//        this.id = id;
-//    }
-//
-//    public void setCustomerNameJson(CustomerNameJson customerNameJson) {
-//        this.customerNameJson = customerNameJson;
-//    }
-//
-//    public void setCustomerAddressJson(CustomerAddressJson customerAddressJson) {
-//        this.customerAddressJson = customerAddressJson;
-//    }
-//
-//    public void setCustomerPhoneJson(CustomerPhoneJson customerPhoneJson) {
-//        this.customerPhoneJson = customerPhoneJson;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
 
 }
