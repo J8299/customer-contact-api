@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class CustomerPhoneJson implements Serializable {
 
+    private static final long serialVersionUID = 2134739672833200601L;
+
     private String number;
     private PhoneType type;
 

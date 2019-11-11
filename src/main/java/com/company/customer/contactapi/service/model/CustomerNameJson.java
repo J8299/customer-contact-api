@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class CustomerNameJson implements Serializable {
 
+    private static final long serialVersionUID = -7076581696262831406L;
+
     private String first;
     private String middle;
     private String last;

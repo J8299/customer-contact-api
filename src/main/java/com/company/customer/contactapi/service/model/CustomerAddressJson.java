@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class CustomerAddressJson implements Serializable {
 
+    private static final long serialVersionUID = 4548653912627080230L;
+
     private String street;
     private String city;
     private String state;
