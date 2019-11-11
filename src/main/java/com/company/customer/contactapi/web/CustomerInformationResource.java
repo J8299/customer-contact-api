@@ -12,7 +12,6 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,9 +1,5 @@
 package com.company.customer.contactapi.service.model;
 
-import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-
 import java.io.Serializable;
 
 public class CustomerPhoneJson implements Serializable {

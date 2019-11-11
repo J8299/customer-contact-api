@@ -7,12 +7,12 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-class CustomerAddressJsonTest {
+public class CustomerAddressJsonTest {
 
-    private CustomerAddressJson customerAddressJson;
+    private CustomerAddressJson customerAddressJson = new CustomerAddressJson();
 
     @Before
-    void setUp() {
+    public void setUp() {
         customerAddressJson.setCity("city");
         customerAddressJson.setState("state");
         customerAddressJson.setStreet("street");
@@ -20,22 +20,22 @@ class CustomerAddressJsonTest {
     }
 
     @Test
-    void getStreet() {
+    public void getStreetTest() {
         assertThat(customerAddressJson.getStreet(), is(equalTo("street")));
     }
 
     @Test
-    void getCity() {
+    public void getCityTest() {
         assertThat(customerAddressJson.getCity(), is(equalTo("city")));
     }
 
     @Test
-    void getState() {
+    public void getStateTest() {
         assertThat(customerAddressJson.getState(), is(equalTo("state")));
     }
 
     @Test
-    void getZip() {
+    public void getZipTest() {
         assertThat(customerAddressJson.getZip(), is(equalTo("zip")));
     }
 
