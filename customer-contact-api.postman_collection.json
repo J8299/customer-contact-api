@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "c39cd495-677d-4ce5-a4d7-a510953e2e58",
+		"name": "customer-contact-api",
+		"description": "These postman requests are to interact with customer-contact-api.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST new customer contact information",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"153\",\r\n\t\"name\": {\r\n\t\t\"first\": \"Jon\",\r\n\t\t\"middle\": \"T\",\r\n\t\t\"last\": \"Jones\"\r\n\t},\r\n\t\"address\": {\r\n\t\t\"street\": \"123 Main Street\",\r\n\t\t\"city\": \"Richmond\",\r\n\t\t\"state\": \"Virginia\",\r\n\t\t\"zip\": \"23226\"\r\n\t},\r\n\t\"phone\": [\r\n\t\t\t{\r\n\t\t\t\t\"number\": \"452-652-5555\",\r\n\t\t\t\t\"type\": \"mobile\"\r\n\t\t\t},\r\n\t\t\t{\r\n            \t\"number\": \"452-652-0000\",\r\n            \t\"type\": \"work\"\r\n        \t}\r\n\t\t],\r\n\t\"email\": \"jon@aol.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/contact-api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact-api",
+						"contacts"
+					]
+				},
+				"description": "A post request to add new customer contact information."
+			},
+			"response": []
+		},
+		{
+			"name": "GET all contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contact-api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact-api",
+						"contacts"
+					]
+				},
+				"description": "A get request to retrieve all customer contact information."
+			},
+			"response": []
+		},
+		{
+			"name": "GET unique customer contact details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contact-api/contacts/153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact-api",
+						"contacts",
+						"153"
+					]
+				},
+				"description": "A get request to retrieve a unique customer contact."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update a unique customer contact",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"153\",\r\n\t\"name\": {\r\n\t\t\"first\": \"Jon\",\r\n\t\t\"middle\": \"T\",\r\n\t\t\"last\": \"Jones\"\r\n\t},\r\n\t\"address\": {\r\n\t\t\"street\": \"153 Main Street\",\r\n\t\t\"city\": \"Richmond\",\r\n\t\t\"state\": \"Virginia\",\r\n\t\t\"zip\": \"23226\"\r\n\t},\r\n\t\"phone\": [\r\n\t\t\t{\r\n\t\t\t\t\"number\": \"452-652-5555\",\r\n\t\t\t\t\"type\": \"mobile\"\r\n\t\t\t},\r\n\t\t\t{\r\n            \t\"number\": \"452-652-0000\",\r\n            \t\"type\": \"work\"\r\n        \t}\r\n\t\t],\r\n\t\"email\": \"jon@aol.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/contact-api/contacts/153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact-api",
+						"contacts",
+						"153"
+					]
+				},
+				"description": "A put request to update a unique customer contact from a previously posted customer id. Using the URL id parameter, you can also new post many payloads to predetermined ids, overwriting the id in the payload iterating over unique ids ranges."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE remove a single customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contact-api/contacts/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact-api",
+						"contacts",
+						"200"
+					]
+				},
+				"description": "A delete request to remove unique customers by id."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

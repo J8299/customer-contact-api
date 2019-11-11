@@ -20,7 +20,8 @@ A spring boot application for demonstrating REST APIs
        ```
  
 ### Create A Database via Postgres Website
- - Download [Postgres](https://www.postgresql.org/download) version 10 for computers that can not run virtual machines
+ - Download [Postgres](https://www.postgresql.org/download) version 10 for computers that can not run 
+ virtual machines
  - Install download version 10 Postgres
  - Open CMD via the start menu
  - Type these commands:
@@ -93,3 +94,10 @@ Payload Body:
   "email": "noreply@email.com"
 }
 ```
+
+#### Additional Resources to Test Endpoint Functionality
+It is also possible to download [Postman](https://www.getpostman.com/) for free
+ - You can upload the [customer-contact-api.postman_collection.json](./customer-contact-api.postman_collection.json) in 
+ this project to run test interactions with this API
+ - Simply click the import button in the top left corner and drag-and-drop the above file to the import box and click 
+ import
