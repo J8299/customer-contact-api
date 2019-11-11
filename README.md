@@ -56,7 +56,12 @@ GET |/contacts/{id} | Get a unique customer contact by database id | No
 DELETE | /contacts/{id} | Remove a contact by contact id | No
 
 #### A viable JSON payload for a POST or PUT sample is below
+Headers: 
+    ```
+    Content-Type: application/json
+    ```
 
+Payload Body: 
 ```json
 {
   "id": "100",
