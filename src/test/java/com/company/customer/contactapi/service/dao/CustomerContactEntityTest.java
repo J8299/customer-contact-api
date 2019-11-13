@@ -4,15 +4,12 @@ import com.company.customer.contactapi.service.model.CustomerAddressJson;
 import com.company.customer.contactapi.service.model.CustomerNameJson;
 import com.company.customer.contactapi.service.model.CustomerPhoneJson;
 import com.company.customer.contactapi.service.model.PhoneType;
-import io.cucumber.java.sl.In;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerContactEntityTest {
