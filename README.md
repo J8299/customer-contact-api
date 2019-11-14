@@ -50,11 +50,11 @@ install [java](https://java.com/en/download/help/download_options.xml)
 
 HTTP Method | Route | Description | Requires Body Payload
 ------------|-------|-------------|----------------------
-GET | /contacts | Returns all customer contacts| No
-POST | /contacts | Create a new contact | Yes
-PUT | /contacts/{id} | Overwrite an existing contact | Yes
-GET |/contacts/{id} | Get a unique customer contact by database id | No
-DELETE | /contacts/{id} | Remove a contact by contact id | No
+GET | /contact-api/contacts | Returns all customer contacts| No
+POST | /contact-api/contacts | Create a new contact | Yes
+PUT | /contact-api/contacts/{id} | Overwrite an existing contact | Yes
+GET |/contact-api/contacts/{id} | Get a unique customer contact by database id | No
+DELETE | /contact-api/contacts/{id} | Remove a contact by contact id | No
 
 #### A viable JSON payload for a POST or PUT sample is below
 Headers: 
