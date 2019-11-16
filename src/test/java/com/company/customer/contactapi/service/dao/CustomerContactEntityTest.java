@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +30,7 @@ public class CustomerContactEntityTest {
         customerNameJson.setLast("last");
         customerPhoneJson.setNumber("804-555-5555");
         customerPhoneJson.setType(PhoneType.home);
-        List<CustomerPhoneJson> phoneList = new ArrayList<>();
+        Collection<CustomerPhoneJson> phoneList = new ArrayList<>();
         phoneList.add(customerPhoneJson);
 
         customerContactEntity = new CustomerContactEntity(
@@ -64,13 +64,15 @@ public class CustomerContactEntityTest {
 
     @Test
     public void getPhoneListTest() {
-        List<CustomerPhoneJson> phoneList = new ArrayList<>();
+        Collection<CustomerPhoneJson> phoneList = new ArrayList<>();
         CustomerPhoneJson customerPhoneJson = new CustomerPhoneJson();
         customerPhoneJson.setNumber("804-555-5555");
         customerPhoneJson.setType(PhoneType.home);
         phoneList.add(customerPhoneJson);
-        assertEquals(customerContactEntity.getPhone().get(0).getNumber(), phoneList.get(0).getNumber());
-        assertEquals(customerContactEntity.getPhone().get(0).getType(), phoneList.get(0).getType());
+        assertEquals(customerContactEntity.getPhone().iterator().next().getNumber(),
+                phoneList.iterator().next().getNumber());
+        assertEquals(customerContactEntity.getPhone().iterator().next().getType(),
+                phoneList.iterator().next().getType());
     }
 
     @Test

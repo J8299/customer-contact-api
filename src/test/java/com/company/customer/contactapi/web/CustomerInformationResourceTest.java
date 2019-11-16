@@ -23,7 +23,6 @@ import org.springframework.web.util.NestedServletException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -32,6 +31,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -45,7 +45,7 @@ public class CustomerInformationResourceTest {
 
     private Collection<CustomerContactEntity> customerContactEntityCollection = new ArrayList<>();
 
-    private List<CustomerContactEntity> entityList = new ArrayList<>();
+    private Collection<CustomerContactEntity> entityList = new ArrayList<>();
 
     private MockMvc mockMvc;
 
@@ -68,7 +68,7 @@ public class CustomerInformationResourceTest {
         customerAddressJson.setZip("zip");
         customerPhoneJson.setNumber("804-555-5555");
         customerPhoneJson.setType(PhoneType.work);
-        List<CustomerPhoneJson> listNumbers = Arrays.asList(customerPhoneJson);
+        Collection<CustomerPhoneJson> listNumbers = Arrays.asList(customerPhoneJson);
         customerContactEntity =
                 new CustomerContactEntity(
                         123,
@@ -76,8 +76,6 @@ public class CustomerInformationResourceTest {
                         customerAddressJson,
                         listNumbers,
                         "email");
-
-
         entityList.add(customerContactEntity);
         customerContactEntityCollection.add(customerContactEntity);
     }

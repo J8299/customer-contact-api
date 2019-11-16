@@ -46,13 +46,11 @@ public class CustomerInformationResource {
             @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = SERVER_ERROR)
     })
     public Collection<CustomerContactEntity> getAllCustomerContacts() throws Exception{
-        Collection<CustomerContactEntity> listOfCustomers = new ArrayList<CustomerContactEntity>();
-        try {
-            listOfCustomers.addAll(customerContactService.getAllCustomers());
+        try{
+            return Collections.unmodifiableCollection(customerContactService.getAllCustomers());
         } catch (Exception ex) {
             throw new Exception("Unable to return list of customers", ex);
         }
-        return Collections.unmodifiableCollection(listOfCustomers);
     }
 
     @GET

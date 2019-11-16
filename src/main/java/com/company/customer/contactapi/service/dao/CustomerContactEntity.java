@@ -12,7 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.List;
+import java.util.Collection;
 
 @ApiModel(description = "Representation of Customer Contacts")
 @Entity
@@ -38,7 +38,7 @@ public class CustomerContactEntity {
 
     @Column(name = "phone")
     @Type(type = "CustomerPhone")
-    private List<CustomerPhoneJson> phone;
+    private Collection<CustomerPhoneJson> phone;
 
     @Column(name = "email")
     private String email;
@@ -47,10 +47,9 @@ public class CustomerContactEntity {
             Integer id,
             CustomerNameJson customerNameJson,
             CustomerAddressJson customerAddressJson,
-            List<CustomerPhoneJson> customerPhoneJson,
+            Collection<CustomerPhoneJson> customerPhoneJson,
             String email
     ) {
-        super();
         this.id = id;
         this.name = customerNameJson;
         this.address = customerAddressJson;
@@ -72,7 +71,7 @@ public class CustomerContactEntity {
         return address;
     }
 
-    public List<CustomerPhoneJson> getPhone() {
+    public Collection<CustomerPhoneJson> getPhone() {
         return phone;
     }
 
