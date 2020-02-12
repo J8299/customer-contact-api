@@ -10,10 +10,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @EnableConfigurationProperties
 public class CustomerContactApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args){
-        new SpringApplicationBuilder(CustomerContactApplication.class)
-                .web(WebApplicationType.SERVLET)
-                .run(args);
-    }
+  public static void main(String[] args) {
+    new SpringApplicationBuilder(CustomerContactApplication.class)
+        .web(WebApplicationType.SERVLET)
+        .run(args);
+  }
 
 }

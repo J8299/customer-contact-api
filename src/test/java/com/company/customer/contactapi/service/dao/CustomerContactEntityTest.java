@@ -29,7 +29,7 @@ public class CustomerContactEntityTest {
         customerNameJson.setMiddle("middle");
         customerNameJson.setLast("last");
         customerPhoneJson.setNumber("804-555-5555");
-        customerPhoneJson.setType(PhoneType.home);
+        customerPhoneJson.setType(PhoneType.HOME);
         Collection<CustomerPhoneJson> phoneList = new ArrayList<>();
         phoneList.add(customerPhoneJson);
 
@@ -67,7 +67,7 @@ public class CustomerContactEntityTest {
         Collection<CustomerPhoneJson> phoneList = new ArrayList<>();
         CustomerPhoneJson customerPhoneJson = new CustomerPhoneJson();
         customerPhoneJson.setNumber("804-555-5555");
-        customerPhoneJson.setType(PhoneType.home);
+        customerPhoneJson.setType(PhoneType.HOME);
         phoneList.add(customerPhoneJson);
         assertEquals(customerContactEntity.getPhone().iterator().next().getNumber(),
                 phoneList.iterator().next().getNumber());

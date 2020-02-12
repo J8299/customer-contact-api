@@ -80,15 +80,15 @@ Payload Body:
   "phone": [
     {
       "number": "804-555-5555",
-      "type": "mobile"
+      "type": "MOBILE"
     }, 
     {
       "number": "804-555-0000",
-      "type": "work"
+      "type": "WORK"
     }, 
     {
       "number": "804-555-5555",
-      "type": "home"
+      "type": "HOME"
     }
   ],
   "email": "noreply@email.com"
