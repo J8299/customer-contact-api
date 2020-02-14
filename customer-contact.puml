@@ -1,0 +1,51 @@
+@startuml
+
+class CustomerContactService {
+  + getAllCustomers(): Collection<CustomerContactEntity>
+  + getCustomerById(Integer id): CustomerContactEntity
+  + postCustomer(CustomerContactEntity customerContact): CustomerContactEntity
+  + updateCustomer(CustomerContactEntity customerContact): New CustomerContactEntity
+  + deleteCustomer(Integer id): Id
+}
+
+CustomerContactService ..> CustomerContactEntity
+
+class CustomerContactEntity {
+  - id: Integer
+  - customerNameJson: CustomerNameJson
+  - customerAddressJson: CustomerAddressJson
+  - customerPhoneJson: Collection<CustomerPhoneJson>
+  - email: String
+}
+
+CustomerContactEntity<|--CustomerNameJson
+CustomerContactEntity<|--CustomerAddressJson
+CustomerContactEntity<|--CustomerPhoneJson
+
+class CustomerNameJson {
+  - first: String
+  - middle: String
+  - last: String
+}
+
+class CustomerAddressJson {
+  - street: String
+  - city: String
+  - state: String
+  - zip: String
+}
+
+class CustomerPhoneJson {
+  - number: String
+  - type: PhoneType
+}
+
+CustomerPhoneJson -> PhoneType
+
+enum PhoneType {
+  + MOBILE
+  + HOME
+  + WORK
+}
+
+@enduml
