@@ -39,19 +39,19 @@ public class CustomerAddressJsonTest {
     assertThat(customerAddressJson.getZip(), is(equalTo("zip")));
   }
 
-//    @Test
-//    void setStreet() {
-//    }
-//
-//    @Test
-//    void setCity() {
-//    }
-//
-//    @Test
-//    void setState() {
-//    }
-//
-//    @Test
-//    void setZip() {
-//    }
+  //    @Test
+  //    void setStreet() {
+  //    }
+  //
+  //    @Test
+  //    void setCity() {
+  //    }
+  //
+  //    @Test
+  //    void setState() {
+  //    }
+  //
+  //    @Test
+  //    void setZip() {
+  //    }
 }

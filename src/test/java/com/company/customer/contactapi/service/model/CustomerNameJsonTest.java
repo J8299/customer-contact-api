@@ -32,5 +32,4 @@ public class CustomerNameJsonTest {
   public void getLastTest() {
     assertThat(customerNameJson.getLast(), is(equalTo("last")));
   }
-
 }

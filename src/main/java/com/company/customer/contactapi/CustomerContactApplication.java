@@ -15,5 +15,4 @@ public class CustomerContactApplication extends SpringBootServletInitializer {
         .web(WebApplicationType.SERVLET)
         .run(args);
   }
-
 }

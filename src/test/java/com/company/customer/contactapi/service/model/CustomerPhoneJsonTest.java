@@ -26,5 +26,4 @@ public class CustomerPhoneJsonTest {
   public void getMiddleTest() {
     assertThat(customerPhoneJson.getType(), is(equalTo(PhoneType.MOBILE)));
   }
-
 }

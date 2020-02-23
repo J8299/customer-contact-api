@@ -15,10 +15,9 @@ public class SpringConfiguration {
   @ConfigurationProperties(prefix = "spring.datasource")
   public static class JpaConfig extends HikariConfig {
 
-    @Bean
+    @Bean(name = "dataSource")
     public DataSource dataSource() {
       return new HikariDataSource(this);
     }
   }
-
 }

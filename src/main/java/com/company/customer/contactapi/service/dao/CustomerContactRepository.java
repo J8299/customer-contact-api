@@ -15,5 +15,4 @@ public interface CustomerContactRepository extends Repository<CustomerContactEnt
   CustomerContactEntity save(CustomerContactEntity customerContactEntity);
 
   void delete(CustomerContactEntity customerContactEntity);
-
 }

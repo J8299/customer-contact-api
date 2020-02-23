@@ -1,7 +1,5 @@
 package com.company.customer.contactapi.service.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class CustomerPhoneJson implements Serializable {
@@ -26,5 +24,4 @@ public class CustomerPhoneJson implements Serializable {
   public void setType(PhoneType type) {
     this.type = type;
   }
-
 }

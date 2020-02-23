@@ -20,17 +20,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CustomerContactServiceTest {
 
-  @InjectMocks
-  CustomerContactService customerContactService;
+  @InjectMocks CustomerContactService customerContactService;
 
-  @Mock
-  CustomerContactRepository customerContactRepository;
+  @Mock CustomerContactRepository customerContactRepository;
 
   private Collection<CustomerContactEntity> customerContactEntityCollection = new ArrayList<>();
 
@@ -56,12 +53,7 @@ public class CustomerContactServiceTest {
     customerPhoneJson.setType(PhoneType.WORK);
     List<CustomerPhoneJson> listNumbers = Arrays.asList(customerPhoneJson);
     customerContactEntity =
-        new CustomerContactEntity(
-            123,
-            customerNameJson,
-            customerAddressJson,
-            listNumbers,
-            "email");
+        new CustomerContactEntity(123, customerNameJson, customerAddressJson, listNumbers, "email");
 
     entityList.add(customerContactEntity);
     customerContactEntityCollection.add(customerContactEntity);
@@ -95,8 +87,7 @@ public class CustomerContactServiceTest {
 
   @Test
   public void deleteCustomer() {
-    //doNothing().when(customerContactRepository).delete(any(CustomerContactEntity.class));
+    // doNothing().when(customerContactRepository).delete(any(CustomerContactEntity.class));
     customerContactService.deleteCustomer(123);
   }
-
 }

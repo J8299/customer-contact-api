@@ -27,22 +27,20 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.BeanIsAbstractException;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.util.NestedServletException;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CustomerInformationResourceTest {
 
-  @InjectMocks
-  private CustomerInformationResource customerInformationResource;
+  @InjectMocks private CustomerInformationResource customerInformationResource;
 
-  @Mock
-  private CustomerContactService customerContactService;
+  @Mock private CustomerContactService customerContactService;
 
   private Collection<CustomerContactEntity> customerContactEntityCollection = new ArrayList<>();
 
@@ -71,12 +69,7 @@ public class CustomerInformationResourceTest {
     customerPhoneJson.setType(PhoneType.WORK);
     Collection<CustomerPhoneJson> listNumbers = Arrays.asList(customerPhoneJson);
     customerContactEntity =
-        new CustomerContactEntity(
-            123,
-            customerNameJson,
-            customerAddressJson,
-            listNumbers,
-            "email");
+        new CustomerContactEntity(123, customerNameJson, customerAddressJson, listNumbers, "email");
     entityList.add(customerContactEntity);
     customerContactEntityCollection.add(customerContactEntity);
   }
@@ -84,8 +77,8 @@ public class CustomerInformationResourceTest {
   @Test
   public void getAllCustomerContacts() throws Exception {
     when(customerContactService.getAllCustomers()).thenReturn(customerContactEntityCollection);
-    mockMvc.perform(get("/contacts")
-        .accept(MediaType.parseMediaType("application/json")))
+    mockMvc
+        .perform(get("/contacts").accept(MediaType.parseMediaType("application/json")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -93,8 +86,8 @@ public class CustomerInformationResourceTest {
   @Test(expected = NestedServletException.class)
   public void getAllCustomerContactsException() throws Exception {
     when(customerContactService.getAllCustomers()).thenThrow(new ArrayIndexOutOfBoundsException());
-    mockMvc.perform(get("/contacts")
-        .accept(MediaType.parseMediaType("application/json")))
+    mockMvc
+        .perform(get("/contacts").accept(MediaType.parseMediaType("application/json")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -102,8 +95,9 @@ public class CustomerInformationResourceTest {
   @Test
   public void getUniqueCustomerContact() throws Exception {
     when(customerContactService.getCustomerById(anyInt())).thenReturn(customerContactEntity);
-    mockMvc.perform(get("/contacts/123")
-        .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+    mockMvc
+        .perform(
+            get("/contacts/123").accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json;charset=UTF-8"));
   }
@@ -112,8 +106,9 @@ public class CustomerInformationResourceTest {
   public void getUniqueCustomerContactException() throws Exception {
     when(customerContactService.getCustomerById(anyInt()))
         .thenThrow(new BeanIsAbstractException("dataSource"));
-    mockMvc.perform(get("/contacts/123")
-        .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+    mockMvc
+        .perform(
+            get("/contacts/123").accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json;charset=UTF-8"));
   }
@@ -124,9 +119,8 @@ public class CustomerInformationResourceTest {
         .thenReturn(customerContactEntity);
     Gson gson = new Gson();
     String json = gson.toJson(customerContactEntity);
-    mockMvc.perform(post("/contacts")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(json))
+    mockMvc
+        .perform(post("/contacts").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -137,9 +131,8 @@ public class CustomerInformationResourceTest {
         .thenThrow(new BeanIsAbstractException("dataSource"));
     Gson gson = new Gson();
     String json = gson.toJson(customerContactEntity);
-    mockMvc.perform(post("/contacts")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(json))
+    mockMvc
+        .perform(post("/contacts").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -150,9 +143,8 @@ public class CustomerInformationResourceTest {
         .thenReturn(customerContactEntity);
     Gson gson = new Gson();
     String json = gson.toJson(customerContactEntity);
-    mockMvc.perform(put("/contacts/123")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(json))
+    mockMvc
+        .perform(put("/contacts/123").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -163,9 +155,8 @@ public class CustomerInformationResourceTest {
         .thenThrow(new BeanIsAbstractException("dataSource"));
     Gson gson = new Gson();
     String json = gson.toJson(customerContactEntity);
-    mockMvc.perform(put("/contacts/123")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(json))
+    mockMvc
+        .perform(put("/contacts/123").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json"));
   }
@@ -173,8 +164,10 @@ public class CustomerInformationResourceTest {
   @Test
   public void deleteCustomerContact() throws Exception {
     when(customerContactService.deleteCustomer(anyInt())).thenReturn("123");
-    mockMvc.perform(delete("/contacts/123")
-        .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+    mockMvc
+        .perform(
+            delete("/contacts/123")
+                .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json;charset=UTF-8"));
   }
@@ -183,17 +176,18 @@ public class CustomerInformationResourceTest {
   public void deleteCustomerContactException() throws Exception {
     when(customerContactService.deleteCustomer(anyInt()))
         .thenThrow(new BeanIsAbstractException("dataSource"));
-    mockMvc.perform(delete("/contacts/123")
-        .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+    mockMvc
+        .perform(
+            delete("/contacts/123")
+                .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json;charset=UTF-8"));
   }
 
   @Test
   public void unregisteredEndpointException() throws Exception {
-    mockMvc.perform(get("/wrongEndpoint")
-        .accept(MediaType.parseMediaType("application/json")))
+    mockMvc
+        .perform(get("/wrongEndpoint").accept(MediaType.parseMediaType("application/json")))
         .andExpect(status().is4xxClientError());
   }
-
 }

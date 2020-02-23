@@ -42,5 +42,4 @@ public class CustomerAddressJson implements Serializable {
   public void setZip(String zip) {
     this.zip = zip;
   }
-
 }

@@ -47,8 +47,7 @@ public class CustomerContactEntity {
       CustomerNameJson customerNameJson,
       CustomerAddressJson customerAddressJson,
       Collection<CustomerPhoneJson> customerPhoneJson,
-      String email
-  ) {
+      String email) {
     this.id = id;
     this.name = customerNameJson;
     this.address = customerAddressJson;
