@@ -29,7 +29,7 @@
     <version.jacoco>0.8.4</version.jacoco>
     <version.javax.persistence>2.2</version.javax.persistence>
     <version.mockito>3.0.0</version.mockito>
-    <version.postgres>42.2.8</version.postgres>
+    <version.postgres>42.4.1</version.postgres>
     <version.powermock>2.0.2</version.powermock>
     <version.swagger>1.5.23</version.swagger>
     <version.maven-shade-plugin>3.2.1</version.maven-shade-plugin>
